@@ -36,4 +36,11 @@ def preprocessing(data):
         x_test.append(close_price_combined)
         y_test.append(testing_data_schedule.iloc[[i]]['Close'].values[0])
 
-    return torch.tensor(x_train, dtype=torch.float32), torch.tensor(y_train, dtype=torch.float32), torch.tensor(x_test, dtype=torch.float32), torch.tensor(y_test, dtype=torch.float32)
+    # Reshaping the arrays into 3D arrays
+    x_train = np.array(x_train)
+    x_test = np.array(x_test)
+    y_train = np.array(y_train)
+    y_test = np.array(y_test)
+
+    #return torch.tensor(x_train, dtype=torch.float32), torch.tensor(y_train, dtype=torch.float32), torch.tensor(x_test, dtype=torch.float32), torch.tensor(y_test, dtype=torch.float32)
+    return x_train, y_train, x_test, y_test
